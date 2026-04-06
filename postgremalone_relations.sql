@@ -44,7 +44,7 @@ CREATE TABLE BusinessAttribute (
     attribute_name VARCHAR(100) PRIMARY KEY
 );
 
-CREATE TABLE BusinessAttribute (
+CREATE TABLE BusinessAttributeValue (
     business_id CHAR(22) NOT NULL,
     attribute_name VARCHAR(100) NOT NULL,
     value VARCHAR(255),
