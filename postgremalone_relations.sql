@@ -92,13 +92,19 @@ CREATE TABLE Friend (
 );
 
 CREATE TABLE Tip (
- user_id CHAR(22) NOT NULL,
- business_id CHAR(22) NOT NULL,
- "date" TIMESTAMP NOT NULL,
+ user_id CHAR(22),
+ "date" TIMESTAMP,
  likes INTEGER NOT NULL DEFAULT 0,
  "text" TEXT,
- PRIMARY KEY (user_id, business_id, "date"),
- FOREIGN KEY (user_id) REFERENCES Users(user_id),
- FOREIGN KEY (business_id) REFERENCES Business(business_id)
+ PRIMARY KEY (user_id, "date"),
+ FOREIGN KEY (user_id) REFERENCES Users(user_id)
 );
 
+CREATE TABLE TipsForBusinesses (
+    user_id CHAR(22),
+    "date" TIMESTAMP,
+    business_id CHAR(22),
+    PRIMARY KEY (user_id, business_id, "date"),
+    FOREIGN KEY (user_id) REFERENCES Users(user_id),
+    FOREIGN KEY (business_id) REFERENCES Business(business_id)
+);
