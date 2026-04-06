@@ -1,7 +1,6 @@
 -- Team Postgre Malone
 
 -- DROP TABLES (reverse order)
-DROP TABLE IF EXISTS TipsForBusinesses CASCADE;
 DROP TABLE IF EXISTS Tip CASCADE;
 DROP TABLE IF EXISTS Friend CASCADE;
 DROP TABLE IF EXISTS Users CASCADE;
@@ -97,15 +96,8 @@ CREATE TABLE Tip (
  "date" TIMESTAMP,
  likes INTEGER NOT NULL DEFAULT 0,
  "text" TEXT,
- PRIMARY KEY (user_id, "date"),
- FOREIGN KEY (user_id) REFERENCES Users(user_id)
-);
-
-CREATE TABLE TipsForBusinesses (
-    user_id CHAR(22),
-    "date" TIMESTAMP,
-    business_id CHAR(22),
-    PRIMARY KEY (user_id, business_id, "date"),
-    FOREIGN KEY (user_id) REFERENCES Users(user_id),
-    FOREIGN KEY (business_id) REFERENCES Business(business_id)
+ business_id CHAR(22),
+ PRIMARY KEY (user_id, business_id, "date"),
+ FOREIGN KEY (user_id) REFERENCES Users(user_id),
+ FOREIGN KEY (business_id) REFERENCES Business(business_id)
 );
