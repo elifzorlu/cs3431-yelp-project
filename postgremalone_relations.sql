@@ -94,10 +94,10 @@ CREATE TABLE Friend (
 CREATE TABLE Tip (
  user_id CHAR(22) NOT NULL,
  business_id CHAR(22) NOT NULL,
- date TIMESTAMP NOT NULL,
+ "date" TIMESTAMP NOT NULL,
  likes INTEGER NOT NULL DEFAULT 0,
- text TEXT,
- PRIMARY KEY (user_id, business_id, date),
+ "text" TEXT,
+ PRIMARY KEY (user_id, business_id, "date"),
  FOREIGN KEY (user_id) REFERENCES Users(user_id),
  FOREIGN KEY (business_id) REFERENCES Business(business_id)
 );
