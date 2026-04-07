@@ -55,7 +55,7 @@ CREATE TABLE BusinessAttributeValue (
 
 CREATE TABLE BusinessHours (
     business_id CHAR(22) NOT NULL,
-    day VARCHAR(10) NOT NULL,
+    day VARCHAR(10) NOT NULL CHECK (day IN ('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday')),
     openTime TIME,
     closeTime TIME,
     PRIMARY KEY (business_id, day),
@@ -92,8 +92,8 @@ CREATE TABLE Friend (
 );
 
 CREATE TABLE Tip (
- user_id CHAR(22),
- "date" TIMESTAMP,
+ user_id CHAR(22) NOT NULL,
+ "date" TIMESTAMP NOT NULL,
  likes INTEGER NOT NULL DEFAULT 0,
  "text" TEXT,
  business_id CHAR(22) NOT NULL,
