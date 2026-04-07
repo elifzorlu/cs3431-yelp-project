@@ -96,7 +96,7 @@ CREATE TABLE Tip (
  "date" TIMESTAMP,
  likes INTEGER NOT NULL DEFAULT 0,
  "text" TEXT,
- business_id CHAR(22),
+ business_id CHAR(22) NOT NULL,
  PRIMARY KEY (user_id, business_id, "date"),
  FOREIGN KEY (user_id) REFERENCES Users(user_id),
  FOREIGN KEY (business_id) REFERENCES Business(business_id)
