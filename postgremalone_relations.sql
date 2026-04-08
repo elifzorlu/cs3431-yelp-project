@@ -1,4 +1,5 @@
--- Team Postgre Malone
+-- Team Postgre Malone 
+-- Anand Pagnis Elif Zorlu and Liz Higday 
 
 -- DROP TABLES (reverse order)
 DROP TABLE IF EXISTS Tip CASCADE;
