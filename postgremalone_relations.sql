@@ -34,16 +34,16 @@ CREATE TABLE Category (
 );
 
 CREATE TABLE BusinessCategory (
-    business_id CHAR(22) NOT NULL,
-    cName VARCHAR(100) NOT NULL,
+    business_id CHAR(22),
+    cName VARCHAR(100),
     PRIMARY KEY (business_id, cName),
     FOREIGN KEY (business_id) REFERENCES Business(business_id) ON DELETE CASCADE,
     FOREIGN KEY (cName) REFERENCES Category(cName) ON DELETE CASCADE
 );
 
 CREATE TABLE BusinessAttributeValue (
-    business_id CHAR(22) NOT NULL,
-    attribute_name VARCHAR(100) NOT NULL,
+    business_id CHAR(22),
+    attribute_name VARCHAR(100),
     value VARCHAR(255),
     PRIMARY KEY (business_id, attribute_name),
     FOREIGN KEY (business_id) REFERENCES Business(business_id) ON DELETE CASCADE,
@@ -51,8 +51,8 @@ CREATE TABLE BusinessAttributeValue (
 );
 
 CREATE TABLE BusinessHours (
-    business_id CHAR(22) NOT NULL,
-    day VARCHAR(10) NOT NULL CHECK (day IN ('monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday')),
+    business_id CHAR(22),
+    day VARCHAR(10) CHECK (day IN ('monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday')),
     openTime TIME,
     closeTime TIME,
     PRIMARY KEY (business_id, day),
@@ -60,40 +60,40 @@ CREATE TABLE BusinessHours (
 );
 
 CREATE TABLE CheckIn (
-    business_id CHAR(22) NOT NULL,
-    checkin_time TIMESTAMP NOT NULL,
+    business_id CHAR(22),
+    checkin_time TIMESTAMP,
     PRIMARY KEY (business_id, checkin_time),
     FOREIGN KEY (business_id) REFERENCES Business(business_id) ON DELETE CASCADE
 );
 
 
 CREATE TABLE Users(
- user_id CHAR(22) NOT NULL,
+ user_id CHAR(22),
  name VARCHAR NOT NULL,
  yelping_since TIMESTAMP NOT NULL,
- tip_count INTEGER NOT NULL DEFAULT 0,
- fans INTEGER NOT NULL DEFAULT 0,
+ tip_count INTEGER DEFAULT 0,
+ fans INTEGER DEFAULT 0,
  average_stars DECIMAL(3,2),
- funny INTEGER NOT NULL DEFAULT 0,
- useful INTEGER NOT NULL DEFAULT 0,
- cool INTEGER NOT NULL DEFAULT 0,
+ funny INTEGER DEFAULT 0,
+ useful INTEGER DEFAULT 0,
+ cool INTEGER DEFAULT 0,
  PRIMARY KEY (user_id)
 );
 
 CREATE TABLE Friend (
- user_id CHAR(22) NOT NULL,
- friend_id CHAR(22) NOT NULL,
+ user_id CHAR(22),
+ friend_id CHAR(22),
  PRIMARY KEY (user_id, friend_id),
  FOREIGN KEY (user_id) REFERENCES Users(user_id),
  FOREIGN KEY (friend_id) REFERENCES Users(user_id)
 );
 
 CREATE TABLE Tip (
- user_id CHAR(22) NOT NULL,
- tipDate TIMESTAMP NOT NULL,
- likes INTEGER NOT NULL DEFAULT 0,
+ user_id CHAR(22),
+ tipDate TIMESTAMP,
+ likes INTEGER DEFAULT 0,
  tipText TEXT,
- business_id CHAR(22) NOT NULL,
+ business_id CHAR(22),
  PRIMARY KEY (user_id, business_id, tipDate),
  FOREIGN KEY (user_id) REFERENCES Users(user_id),
  FOREIGN KEY (business_id) REFERENCES Business(business_id)
