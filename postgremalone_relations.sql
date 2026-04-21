@@ -46,8 +46,7 @@ CREATE TABLE BusinessAttributeValue (
     attribute_name VARCHAR(100),
     value VARCHAR(255),
     PRIMARY KEY (business_id, attribute_name),
-    FOREIGN KEY (business_id) REFERENCES Business(business_id) ON DELETE CASCADE,
-    FOREIGN KEY (attribute_name) REFERENCES BusinessAttribute(attribute_name) ON DELETE CASCADE
+    FOREIGN KEY (business_id) REFERENCES Business(business_id) ON DELETE CASCADE
 );
 
 CREATE TABLE BusinessHours (
